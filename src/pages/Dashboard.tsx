@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import type { Database } from "../lib/database.types";
-import { useAuth } from "../auth/AuthContext";
+import NavigationBar from "../components/NavigationBar";
 
 type HealthData = Database["public"]["Tables"]["health_data"]["Row"];
 
@@ -191,7 +191,6 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [editingData, setEditingData] = useState<HealthData | null>(null);
-  const { logout } = useAuth();
 
   useEffect(() => {
     fetchHealthData();
@@ -302,27 +301,22 @@ function Dashboard() {
                 Student Health Monitoring
               </h1>
             </div>
-            <div className="flex items-center gap-2">
-              <Link
-                to="/users"
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-              >
-                <UserPlus className="h-5 w-5" />
-                Add Student
-              </Link>
-              <button
-                className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-blue-700"
-                onClick={logout}
-              >
-                Logout
-              </button>
-            </div>
+            <NavigationBar />
           </div>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
+          <div className="flex justify-end items-center mb-2">
+            <Link
+              to="/users"
+              className="flex items-center gap-1 px-4 py-2 rounded-md font-semibold text-gray-700 shadow bg-gray-50 border-gray-100 hover:bg-gray-900 hover:text-white"
+            >
+              <UserPlus className="h-5 w-5" />
+              Add Student
+            </Link>
+          </div>
           <div className="bg-white shadow rounded-lg overflow-hidden">
             {loading ? (
               <div className="p-4 text-center">Loading...</div>

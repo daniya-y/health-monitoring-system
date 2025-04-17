@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Users as UsersIcon, UserPlus, Pencil, Trash2, X } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import type { Database } from "../lib/database.types";
-import { useAuth } from "../auth/AuthContext"; // Import the hook
+import NavigationBar from "../components/NavigationBar";
 
 type Student = Database["public"]["Tables"]["students"]["Row"];
 
@@ -114,7 +114,6 @@ function Users() {
   const [error, setError] = useState<string | null>(null);
   const [editingStudent, setEditingStudent] = useState<Student | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { logout } = useAuth();
 
   useEffect(() => {
     fetchStudents();
@@ -209,30 +208,25 @@ function Users() {
                 Student Management
               </h1>
             </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => {
-                  setEditingStudent(null);
-                  setIsModalOpen(true);
-                }}
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-              >
-                <UserPlus className="h-5 w-5" />
-                Add Student
-              </button>
-              <button
-                className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-blue-700"
-                onClick={logout}
-              >
-                Logout
-              </button>
-            </div>
+            <NavigationBar />
           </div>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
+          <div className="flex justify-end items-center mb-2">
+            <button
+              onClick={() => {
+                setEditingStudent(null);
+                setIsModalOpen(true);
+              }}
+              className="flex items-center gap-1 px-4 py-2 rounded-md font-semibold text-gray-700 shadow bg-gray-50 border-gray-100 hover:bg-gray-900 hover:text-white"
+            >
+              <UserPlus className="h-5 w-5" />
+              Add Student
+            </button>
+          </div>
           <div className="bg-white shadow rounded-lg overflow-hidden">
             {loading ? (
               <div className="p-4 text-center">Loading...</div>
