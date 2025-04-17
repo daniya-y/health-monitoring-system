@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LogIn } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext"; // Import the hook
@@ -13,10 +13,13 @@ function Login() {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     login(username, password);
+  };
+
+  useEffect(() => {
     if (isAuthenticated) {
       navigate("/dashboard"); // Redirect to the dashboard after successful login
     }
-  };
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="min-h-screen bg-gray-50 ">
