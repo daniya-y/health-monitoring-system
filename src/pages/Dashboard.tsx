@@ -8,11 +8,14 @@ import {
   Trash2,
   X,
   UserPlus,
+  Info,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import type { Database } from "../lib/database.types";
 import NavigationBar from "../components/NavigationBar";
+import { getHealthStatus } from "../utils/healthUtils";
+import ConditionInfoModal from "../components/ConditionInfoModal";
 
 type HealthData = Database["public"]["Tables"]["health_data"]["Row"];
 
@@ -139,58 +142,22 @@ function EditModal({ data, onClose, onSave }: EditModalProps) {
   );
 }
 
-function getHealthStatus(
-  heartRate: number,
-  spo2: number,
-  temperature: number
-): {
-  status: string;
-  icon: string;
-  color: string;
-} {
-  // Critical condition checks
-  if (
-    heartRate < 40 ||
-    heartRate > 130 ||
-    spo2 < 90 ||
-    temperature > 39.5 ||
-    temperature < 35.0
-  ) {
-    return {
-      status: "Critical Condition",
-      icon: "🚨",
-      color: "text-red-600",
-    };
-  }
-
-  // Less good condition checks
-  if (
-    heartRate < 50 ||
-    heartRate > 120 ||
-    (spo2 >= 90 && spo2 < 95) ||
-    temperature < 36.0 ||
-    temperature > 37.5
-  ) {
-    return {
-      status: "Less Good Condition",
-      icon: "⚠️",
-      color: "text-yellow-600",
-    };
-  }
-
-  // Good condition
-  return {
-    status: "Good Condition",
-    icon: "✅",
-    color: "text-green-600",
-  };
-}
-
 function Dashboard() {
   const [healthData, setHealthData] = useState<HealthData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [editingData, setEditingData] = useState<HealthData | null>(null);
+  const [isConditionInfoModalOpen, setIsConditionInfoModalOpen] =
+    useState(false);
+  const [currentHealthStatus, setCurrentHealthStatus] = useState({
+    status: "Less good", // Example initial status
+    icon: "✅",
+    color: "text-red-500",
+  });
+
+  const handleCloseConditionInfoModal = () => {
+    setIsConditionInfoModalOpen(false);
+  };
 
   useEffect(() => {
     fetchHealthData();
@@ -381,12 +348,20 @@ function Dashboard() {
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {data.body_temperature}°C
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm flex items-center gap-x-2">
                             <span
                               className={`font-medium ${healthStatus.color}`}
                             >
                               {healthStatus.icon} {healthStatus.status}
                             </span>
+                            <button
+                              onClick={() => {
+                                setCurrentHealthStatus(healthStatus);
+                                setIsConditionInfoModalOpen(true);
+                              }}
+                            >
+                              <Info className="h-3 w-3 text-slate-500"></Info>
+                            </button>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {format(new Date(data.created_at), "PPpp")}
@@ -414,6 +389,13 @@ function Dashboard() {
                     })}
                   </tbody>
                 </table>
+
+                {/* Condition Info Modal */}
+                <ConditionInfoModal
+                  isOpen={isConditionInfoModalOpen}
+                  onClose={handleCloseConditionInfoModal}
+                  healthStatus={currentHealthStatus}
+                />
               </div>
             )}
           </div>

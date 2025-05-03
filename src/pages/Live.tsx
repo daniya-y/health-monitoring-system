@@ -6,56 +6,10 @@ import { supabase } from "../lib/supabase";
 import type { Database } from "../lib/database.types";
 import NavigationBar from "../components/NavigationBar";
 import ConditionInfoModal from "../components/ConditionInfoModal";
+import { getHealthStatus } from "../utils/healthUtils";
 
 type HealthData = Database["public"]["Tables"]["health_data"]["Row"];
 type Student = Database["public"]["Tables"]["students"]["Row"];
-
-function getHealthStatus(
-  heartRate: number,
-  spo2: number,
-  temperature: number
-): {
-  status: string;
-  icon: string;
-  color: string;
-} {
-  // Critical condition checks
-  if (
-    heartRate < 40 ||
-    heartRate > 130 ||
-    spo2 < 90 ||
-    temperature > 39.5 ||
-    temperature < 35.0
-  ) {
-    return {
-      status: "Critical Condition",
-      icon: "🚨",
-      color: "text-red-600",
-    };
-  }
-
-  // Less good condition checks
-  if (
-    heartRate < 50 ||
-    heartRate > 120 ||
-    (spo2 >= 90 && spo2 < 95) ||
-    temperature < 36.0 ||
-    temperature > 37.5
-  ) {
-    return {
-      status: "Less Good Condition",
-      icon: "⚠️",
-      color: "text-yellow-600",
-    };
-  }
-
-  // Good condition
-  return {
-    status: "Good Condition",
-    icon: "✅",
-    color: "text-green-600",
-  };
-}
 
 function Live() {
   const [healthData, setHealthData] = useState<HealthData[]>([]);
@@ -235,13 +189,6 @@ function Live() {
                       <Info className="h-4 w-4 mt-1 text-slate-500"></Info>
                     </button>
                   </div>
-
-                  // comment here
-                  //   <p
-                  //   className={`text-lg font-medium mt-2 ${healthStatus.color}`}
-                  // >
-                  //   {healthStatus.icon} {healthStatus.status}
-                  // </p>
                 )}
               </div>
 
