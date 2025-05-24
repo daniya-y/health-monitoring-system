@@ -265,7 +265,7 @@ function Dashboard() {
             <div className="flex items-center gap-2">
               <Activity className="h-8 w-8 text-blue-600" />
               <h1 className="text-3xl font-bold text-gray-900">
-                Student Health Monitoring
+                Sistem Monitoring Kesehatan
               </h1>
             </div>
             <NavigationBar />

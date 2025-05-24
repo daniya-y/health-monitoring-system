@@ -205,7 +205,7 @@ function Users() {
             <div className="flex items-center gap-2">
               <UsersIcon className="h-8 w-8 text-blue-600" />
               <h1 className="text-3xl font-bold text-gray-900">
-                Student Management
+                Manajemen User
               </h1>
             </div>
             <NavigationBar />
@@ -250,7 +250,7 @@ function Users() {
                       Email
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Actions
+                      Aksi
                     </th>
                   </tr>
                 </thead>
