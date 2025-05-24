@@ -19,46 +19,46 @@ function ConditionModal({ isOpen, onClose, healthStatus }: ConditionInfoModal) {
   let modalContent;
 
   switch (healthStatus.status) {
-    case "Good Condition":
+    case "Kondisi Baik":
       modalContent = (
         <div>
-          <p className="mb-2 font-semibold">Reason for Good Condition:</p>
+          <p className="mb-2 font-semibold">Alasan Kondisi Baik:</p>
           <ul>
-            <li>All vital signs are within the optimal range.</li>
-            <li>Heart Rate: 60-100 BPM</li>
-            <li>SpO₂: ≥ 95%</li>
-            <li>Body Temperature: 36.1 - 37.5°C</li>
+            <li>Semua tanda vital berada dalam kisaran optimal.</li>
+            <li>Detak Jantung: 60-100 BPM</li>
+            <li>Saturasi Oksigen: ≥ 95%</li>
+            <li>Suhu Tubuh: 36.1 - 37.5°C</li>
           </ul>
         </div>
       );
       break;
-    case "Less Good Condition":
+    case "Kondisi Kurang Baik":
       modalContent = (
         <div>
-          <p className="mb-2 font-semibold">Reasons for Less Good Condition:</p>
+          <p className="mb-2 font-semibold">Alasan Kondisi Kurang Baik:</p>
           <p className="mb-2">
-            One or more vital signs are slightly outside the optimal range.
-            Monitoring is advised.
+          Satu atau beberapa tanda vital berada sedikit di luar kisaran optimal.
+          Pemantauan dianjurkan.
           </p>
           <ul>
-            <li>Heart Rate: &lt; 50 or &gt; 120 BPM</li>
-            <li>SpO₂: 90-94%</li>
-            <li>Body Temperature: &lt; 36.0°C or &gt; 37.5°C</li>
+            <li>Detak Jantung: &lt; 50 atau &gt; 120 BPM</li>
+            <li>Saturasi Oksigen: 90-94%</li>
+            <li>Suhu Tubuh: &lt; 36.0°C atau &gt; 37.5°C</li>
           </ul>
         </div>
       );
       break;
-    case "Critical Condition":
+    case "Kondisi Perlu Perhatian":
       modalContent = (
         <div>
           <p className="mb-2 font-semibold text-red-600">
-            Critical Condition Detected!
+            Terdeteksi Kondisi Perlu Perhatian!
           </p>
-          <p className="mb-2">Immediate medical attention is required.</p>
+          <p className="mb-2">Perhatian medis segera diperlukan.</p>
           <ul>
-            <li>Heart Rate: &lt; 40 or &gt; 130 BPM</li>
-            <li>SpO₂: &lt; 90%</li>
-            <li>Body Temperature: &gt; 39.5°C or &lt; 35.0°C</li>
+            <li>Detak Jantung: &lt; 40 atau &gt; 130 BPM</li>
+            <li>Saturasi Oksigen: &lt; 90%</li>
+            <li>Suhu Tubuh: &gt; 39.5°C atau &lt; 35.0°C</li>
           </ul>
         </div>
       );

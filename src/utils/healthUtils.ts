@@ -16,7 +16,7 @@ export function getHealthStatus(
     temperature < 35.0
   ) {
     return {
-      status: "Critical Condition",
+      status: "Kondisi Perlu Perhatian",
       icon: "🚨",
       color: "text-red-600",
     };
@@ -31,7 +31,7 @@ export function getHealthStatus(
     temperature > 37.5
   ) {
     return {
-      status: "Less Good Condition",
+      status: "Kondisi Kurang Baik",
       icon: "⚠️",
       color: "text-yellow-600",
     };
@@ -39,7 +39,7 @@ export function getHealthStatus(
 
   // Good condition
   return {
-    status: "Good Condition",
+    status: "Kondisi Baik",
     icon: "✅",
     color: "text-green-600",
   };

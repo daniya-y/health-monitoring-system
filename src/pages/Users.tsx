@@ -30,7 +30,7 @@ function StudentModal({ student, onClose, onSave }: StudentModalProps) {
       <div className="bg-white rounded-lg p-6 max-w-md w-full">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold">
-            {student ? "Edit Student" : "Add New Student"}
+            {student ? "Edit User" : "Tambah User Baru"}
           </h2>
           <button
             onClick={onClose}
@@ -43,7 +43,7 @@ function StudentModal({ student, onClose, onSave }: StudentModalProps) {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Student ID
+                NIM
               </label>
               <input
                 type="text"
@@ -93,13 +93,13 @@ function StudentModal({ student, onClose, onSave }: StudentModalProps) {
               onClick={onClose}
               className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50"
             >
-              Cancel
+              Batal
             </button>
             <button
               type="submit"
               className="px-4 py-2 bg-blue-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-blue-700"
             >
-              {student ? "Save Changes" : "Add Student"}
+              {student ? "Simpan Perubahan" : "Tambah Userr"}
             </button>
           </div>
         </form>
@@ -224,7 +224,7 @@ function Users() {
               className="flex items-center gap-1 px-4 py-2 rounded-md font-semibold text-gray-700 shadow bg-gray-50 border-gray-100 hover:bg-gray-900 hover:text-white"
             >
               <UserPlus className="h-5 w-5" />
-              Add Student
+              Tambah User
             </button>
           </div>
           <div className="bg-white shadow rounded-lg overflow-hidden">
@@ -241,10 +241,10 @@ function Users() {
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Student ID
+                      NIM
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Name
+                      Nama
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Email

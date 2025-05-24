@@ -55,7 +55,7 @@ function EditModal({ data, onClose, onSave }: EditModalProps) {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Student ID
+                NIM
               </label>
               <input
                 type="text"
@@ -71,7 +71,7 @@ function EditModal({ data, onClose, onSave }: EditModalProps) {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Heart Rate (BPM)
+                Detak Jantung (BPM)
               </label>
               <input
                 type="number"
@@ -88,7 +88,7 @@ function EditModal({ data, onClose, onSave }: EditModalProps) {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                SpO2 (%)
+                Saturasi Oksigen (%)
               </label>
               <input
                 type="number"
@@ -105,7 +105,7 @@ function EditModal({ data, onClose, onSave }: EditModalProps) {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Body Temperature (°C)
+                Suhu Tubuh (°C)
               </label>
               <input
                 type="number"
@@ -127,13 +127,13 @@ function EditModal({ data, onClose, onSave }: EditModalProps) {
               onClick={onClose}
               className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50"
             >
-              Cancel
+              Batal
             </button>
             <button
               type="submit"
               className="px-4 py-2 bg-blue-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-blue-700"
             >
-              Save Changes
+              Simpan Perubahan
             </button>
           </div>
         </form>
@@ -281,7 +281,7 @@ function Dashboard() {
               className="flex items-center gap-1 px-4 py-2 rounded-md font-semibold text-gray-700 shadow bg-gray-50 border-gray-100 hover:bg-gray-900 hover:text-white"
             >
               <UserPlus className="h-5 w-5" />
-              Add Student
+              Tambah User
             </Link>
           </div>
           <div className="bg-white shadow rounded-lg overflow-hidden">
@@ -299,31 +299,31 @@ function Dashboard() {
                   <thead className="bg-gray-50">
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Student ID
+                        NIM
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         <div className="flex items-center gap-1">
                           <Heart className="h-4 w-4" />
-                          Heart Rate
+                          Detak Jantung
                         </div>
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        SpO2
+                        Saturasi Oksigen
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         <div className="flex items-center gap-1">
                           <Thermometer className="h-4 w-4" />
-                          Temperature
+                          Suhu Tubuh
                         </div>
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Health Status
+                        Kondisi
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Timestamp
+                        Waktu
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Actions
+                        Aksi
                       </th>
                     </tr>
                   </thead>

@@ -173,7 +173,7 @@ function Live() {
                   {student?.name || "Loading..."}
                 </h2>
                 <p className="text-lg text-gray-600">
-                  Student ID: {student?.student_id || "Loading..."}
+                  NIM: {student?.student_id || "Loading..."}
                 </p>
                 {healthStatus && (
                   <div className="flex items-center justify-center gap-x-2 mt-2">
@@ -198,7 +198,7 @@ function Live() {
                 <div className="bg-gray-50 rounded-lg p-4">
                   <h3 className="text-lg font-semibold text-center mb-2 flex items-center justify-center gap-2">
                     <Heart className="h-5 w-5 text-red-500" />
-                    Heart Rate
+                    Detak Jantung
                   </h3>
                   <GaugeChart
                     id="heart-rate-gauge"
@@ -226,7 +226,7 @@ function Live() {
                 {/* SpO2 Gauge */}
                 <div className="bg-gray-50 rounded-lg p-4">
                   <h3 className="text-lg font-semibold text-center mb-2">
-                    SpO2 Level
+                    Saturasi Oksigen
                   </h3>
                   <GaugeChart
                     id="spo2-gauge"
@@ -247,7 +247,7 @@ function Live() {
                 <div className="bg-gray-50 rounded-lg p-4">
                   <h3 className="text-lg font-semibold text-center mb-2 flex items-center justify-center gap-2">
                     <Thermometer className="h-5 w-5 text-blue-500" />
-                    Temperature
+                    Suhu Tubuh
                   </h3>
                   <GaugeChart
                     id="temperature-gauge"
@@ -288,28 +288,28 @@ function Live() {
                   <thead className="bg-gray-50">
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Student ID
+                        NIM
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         <div className="flex items-center gap-1">
                           <Heart className="h-4 w-4" />
-                          Heart Rate
+                          Detak Jantung
                         </div>
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        SpO2
+                        Saturasi Oksigen
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         <div className="flex items-center gap-1">
                           <Thermometer className="h-4 w-4" />
-                          Temperature
+                          Suhu Tubuh
                         </div>
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Health Status
+                        Kondisi
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Timestamp
+                        Waktu
                       </th>
                     </tr>
                   </thead>
