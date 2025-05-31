@@ -52,7 +52,7 @@ function Login() {
               <LogIn className="h-12 w-12 text-blue-600" />
             </div>
             <h2 className="mt-6 mb-12 text-center text-3xl font-extrabold text-gray-900">
-              Sign in to your account
+              Login Admin
             </h2>
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
@@ -106,7 +106,7 @@ function Login() {
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {/* {loading ? "Signing in..." : "Sign in"} */}
-                  Sign in
+                  Login
                 </button>
               </div>
             </form>

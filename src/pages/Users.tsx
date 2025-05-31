@@ -60,7 +60,7 @@ function StudentModal({ student, onClose, onSave }: StudentModalProps) {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Name
+                Nama
               </label>
               <input
                 type="text"
